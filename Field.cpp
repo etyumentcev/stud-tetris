@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include <iostream> 
 #include <windows.h>
-#include<conio.h>
+//#include"Figures.h"
+
 
 using namespace std;
 
@@ -70,7 +71,7 @@ struct Cells
 	{
 		Field Show;
 		Show.DrawField();
-		_getch();
+		
 		 return 0;
 }
 	
