@@ -13,8 +13,13 @@ class Squard : public Figures
 public:
 	
 	Squard() :
-		hight(2),
+		height(2),
 		width(2)
+	{
+
+	}
+
+	bool SetCursorPos()
 	{
 
 	}
@@ -22,7 +27,7 @@ public:
 	void Draw()                                   
 	{
 		
-		for (int i = 0; i < hight; i++)
+		for (int i = 0; i < height; i++)
 		{
 			
 				cout << "#";
