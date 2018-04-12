@@ -1,14 +1,20 @@
 #ifndef FIELD_H   
 #define FIELD_H  
 #include "Figures.h"
+#include<vector>
+#include"Cell.h"
 
 
 class Field : public Figures
 {
 public:
-	int width=100;
-	int	height=50;
+	Field(int newWidth, int newHeight);
+	int width;
+	int	height;
 	bool CheckCell(int x, int y);
+	void Draw();
+
+	vector<vector<Cell*>> cells;
 
 };
 #endif
