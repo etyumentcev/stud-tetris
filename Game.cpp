@@ -66,13 +66,15 @@ bool Game::Check_Line(int row)
 	return true;
 }
 
+
 void Game::Check_Field()
 {
 	for (int i = 0; i < field->cells.size(); i++)
 	{
 		if (Check_Line(i))
 		{
-			
+			field->cells.erase(field->cells.begin() + i);
+			field->Create_Line_Top();
 		}
 	}
 }

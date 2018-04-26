@@ -13,6 +13,7 @@ public:
 	int	height;
 	bool CheckCell(int x, int y);
 	void Draw();
+	void Create_Line_Top();
 
 	vector<vector<Cell*>> cells;
 
