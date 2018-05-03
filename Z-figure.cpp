@@ -1,51 +1,28 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <iostream> 
-#include "Figures.h"
-using namespace std;
+#include "Z-figure.h"
 
 
-class Zfigure : public Figures
+Zfigure::Zfigure(Field *field) : BaseFigure(field)
 {
-public:
+	Cell *cell1 = new Cell(_field);
+	cell1->x = field->width / 2;
+	cell1->y = 0;
+	cells.push_back(cell1);
 
-	
+	Cell *cell2 = new Cell(_field);
+	cell2->x = field->width / 2 + 1;
+	cell2->y = 0;
+	cells.push_back(cell2);
 
-	Zfigure() :
-		height(2),
-		width(3)
-	{
+	Cell *cell3 = new Cell(_field);
+	cell3->x = field->width / 2 + 1;
+	cell3->y = 1;
+	cells.push_back(cell3);
 
-	}
-
-	bool SetCursorPos()
-	{
-
-	}
-
-	void Draw()
-	{
-		for (int i = 0; i < width-1; i++)
-		{			
-				cout << "#";
-			}
-		
-		cout << endl;
-
-		for (int i = 0; i < height-1; i++)
-		{
-			for (int j = 0; j < width; j++)
-			{
-				if (j == 0 )
-					cout << " ";
-				else
-				{
-					cout << "#";
-				}
-			}
-			
-		}
-
-		cout << endl;
-	};
-};
+	Cell *cell4 = new Cell(_field);
+	cell4->x = field->width / 2 + 2;
+	cell4->y = 1;
+	cells.push_back(cell4);
+}
 

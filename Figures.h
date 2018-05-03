@@ -20,7 +20,7 @@ public:
 	virtual void MoveRight();
 	virtual void MoveLeft();
 	virtual void Rotate();
-
+	vector<Cell*> cells;
 protected:
 	Field *_field;
 	

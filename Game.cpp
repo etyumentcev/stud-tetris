@@ -12,6 +12,9 @@ void Game::New_Game()
 	field = new Field(100, 50);
 	while (true)
 	{
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(40));
+		Tick();
 		// подумать как сделать прив€зку бесконечного цикла ко времени
 	}
 }
@@ -25,20 +28,20 @@ void Game::Tick()
 		Current_Figure->MoveLeft();
 	} 
 	else {
-		if (Button == 39)
+		if (Button == 77)
 		{
 			Current_Figure->MoveRight();
 		}
 		else
 		{
-			if (Button == 37)
+			if (Button == 75)
 			{
 				Current_Figure->Rotate();
 			}
 		}
 	};
 	//ќтрисовка пол€
-	field->Draw();
+	field->Draw(Counter);
 
 	//ќтрисовка фигуры
 	Current_Figure->Draw();
@@ -48,10 +51,12 @@ void Game::Tick()
 }
 
 
-char Game::Read_Game_Button()
+int Game::Read_Game_Button()
 {
-
-	return getch();
+	if (_kbhit()) {
+		return _getch();
+	}
+	return 0;
 }
 
 bool Game::Check_Line(int row)
@@ -69,12 +74,13 @@ bool Game::Check_Line(int row)
 
 void Game::Check_Field()
 {
-	for (int i = 0; i < field->cells.size(); i++)
+	for (int i = field->cells.size() - 1; i >= 0; i--)
 	{
-		if (Check_Line(i))
+		while (Check_Line(i))
 		{
-			field->cells.erase(field->cells.begin() + i);
-			field->Create_Line_Top();
+			field->ClearLine(i);
+			field->MoveCellsDown(i);
+			Counter++;
 		}
 	}
 }

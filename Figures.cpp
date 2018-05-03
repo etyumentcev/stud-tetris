@@ -15,6 +15,10 @@ Figures::Figures(Field *field) : _field(field)
 
 void Figures::Draw()
 {
+	for (int i = 0; i < cells.size(); i++)
+	{
+		cells[i]->Draw();
+	}
 	
 };
 void Figures::Rotate()

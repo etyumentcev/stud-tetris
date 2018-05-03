@@ -1,53 +1,29 @@
 #include "stdafx.h"
 #include <iostream> 
-#include "Figures.h"
-using namespace std;
+#include "T-figure.h"
 
-class Tfigure : public Figures
-{
-public:
 
-	
 
-	Tfigure() :
-		height(2),
-		width(3)
+
+Tfigure::Tfigure(Field *field) : BaseFigure(field)
 	{
+		Cell *cell1 = new Cell(_field);
+		cell1->x = field->width / 2 + 1;
+		cell1->y = 0;
+		cells.push_back(cell1);
 
+		Cell *cell2 = new Cell(_field);
+		cell2->x = field->width / 2;
+		cell2->y = 1;
+		cells.push_back(cell2);
+
+		Cell *cell3 = new Cell(_field);
+		cell3->x = field->width / 2 + 1;
+		cell3->y = 1;
+		cells.push_back(cell3);
+
+		Cell *cell4 = new Cell(_field);
+		cell4->x = field->width / 2 + 2;
+		cell4->y = 1;
+		cells.push_back(cell4);
 	}
-
-	bool SetCursorPos()
-	{
-
-	}
-
-	void Draw()
-	{
-		for (int i = 0; i < width; i++)
-		{
-			cout << "#";
-		}
-
-		cout << endl;
-
-		for (int i = 0; i < height - 1; i++)
-		{
-			for (int j = 0; j < width; j++)
-			{
-				if (j == 1)
-					cout << "#";
-				else
-				{
-					cout << " ";
-				}
-			}
-
-		}
-
-		cout << endl;
-	};
-};
-
-
-
-

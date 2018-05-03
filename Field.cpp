@@ -23,38 +23,82 @@ Field::Field(int newWidth, int newHeight) :
 	}
 }
 
-
-void Field::Draw()
-		{
-	
-			system("cls");
-			for (int i = 0; i < width; i++)
+void Field::MoveCellsDown(int row)
+{
+	for (int j = 0; j < row; j++) {
+		//Проходимся по ячейкам в строке
+		for (int i = 0; i < cells[j].size(); i++) {
+			//Добавляем ячейки в строку
+			if (cells[j][i] != nullptr)
 			{
-				cout << "*";
+				cells[j][i]->y++;
+				cells[j + 1][i] = cells[j][i];
+				cells[j][i] = nullptr;
 			}
-			cout << endl;
-
-			for (int i = 0; i < height; i++)
-			{
-				for (int j = 0; j < width; j++)
-				{
-					if (j==0||j==width-1)
-						cout << "*";
-					else 
-					{
-						cout << " ";
-					}
-				}
-				cout << endl;
-				}
-			
-			for (int i = 0; i < width; i++)
-			{
-				cout << "*";
-			}
-			cout << endl;
-
 		}
+	}
+}
+
+void Field::ClearLine(int row)
+{
+	for (int i = 0; i < cells[row].size(); i++) {
+		//Добавляем ячейки в строку
+		if (cells[row][i] != nullptr)
+		{
+			delete cells[row][i];
+			cells[row][i] = nullptr;
+		}
+	}
+}
+
+void Field::DrawCells()
+{
+	for (int j = 0; j < height; j++) {
+		//Проходимся по ячейкам в строке
+		for (int i = 0; i < width; i++) {
+			//Добавляем ячейки в строку
+			if (cells[j][i] != nullptr)
+			{
+				cells[j][i]->Draw();
+			}
+		}
+	}
+}
+
+void Field::Draw(int Points)
+{
+
+	COORD coord;
+	coord.X = 0;
+	coord.Y = 0;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+	for (int i = 0; i < width + 2; i++)
+	{
+		cout << "*";
+	}
+
+	cout << "  points: " << Points << endl;
+
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width + 2; j++)
+		{
+			if (j == 0 || j == width + 1)
+				cout << "*";
+			else
+			{
+				cout << " ";
+			}
+		}
+		cout << endl;
+	}
+
+	for (int i = 0; i < width + 2; i++)
+	{
+		cout << "*";
+	}
+	DrawCells();
+}
 	
 
 	bool Field::CheckCell(int x, int y)
@@ -71,7 +115,7 @@ void Field::Draw()
 	}
 
 
-	void Field::Create_Line_Top()
+	/*void Field::Create_Line_Top()
 	{
 		vector<Cell*> cellLine;
 		for (int i = 0; i < width; i++)
@@ -79,4 +123,4 @@ void Field::Draw()
 			cellLine.push_back(nullptr);
 		}
 		cells.insert(cells.begin(), cellLine);
-	}
+	}*/
