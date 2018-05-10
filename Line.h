@@ -1,13 +1,13 @@
 #ifndef LINE_H   
 #define LINE_H
-#include "BaseFigure.h"
+#include "Figures.h"
 
 
 //using namespace std;
 
 
 
-class Line : public BaseFigure
+class Line : public Figures
 {
 public:
 	

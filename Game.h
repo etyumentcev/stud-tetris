@@ -15,9 +15,10 @@ public:
 	int Counter = 0;
 	void Check_Field();
 	bool Check_Line(int row);
-	Figures *Create_New_Figure();
+	void Create_New_Figure();
 	Figures *Current_Figure;
+	bool Is_Time_To_Move_Down();
 	~Game();
-};
+};        
 
 #endif

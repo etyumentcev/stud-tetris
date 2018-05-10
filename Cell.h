@@ -20,8 +20,14 @@ protected:
 };
 
 
-
-
+//class RedCell : public Cell
+//{
+//public:
+//	RedCell(Field *field) : Cell(field) {
+//
+//	}
+//
+//	 void Draw() override;
+//};
 
 #endif
-

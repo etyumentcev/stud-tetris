@@ -1,10 +1,10 @@
-//#include "stdafx.h"
+
 #include <iostream> 
 #include "L-figure.h"
 
 
 
-Lfigure::Lfigure(Field *field) : BaseFigure(field)
+Lfigure::Lfigure(Field *field) : Figures(field)
 	{
 		Cell *cell1 = new Cell(_field);
 		cell1->x = field->width / 2;

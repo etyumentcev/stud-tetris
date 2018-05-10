@@ -1,7 +1,14 @@
-#include "stdafx.h"
 #include "Game.h"
-#include"Field.h"
-#include<conio.h>
+#include <chrono>
+#include <thread>
+#include <time.h>
+#include <conio.h>
+#include "L-figure.h"
+#include "T-figure.h"
+#include "Z-figure.h"
+#include "Line.h"
+#include "Squard.h"
+
 
 Game::Game()
 {
@@ -32,13 +39,13 @@ void Game::Tick()
 		{
 			Current_Figure->MoveRight();
 		}
-		else
+		/*else
 		{
 			if (Button == 75)
 			{
 				Current_Figure->Rotate();
 			}
-		}
+		}*/
 	};
 	//Отрисовка поля
 	field->Draw(Counter);
@@ -46,8 +53,19 @@ void Game::Tick()
 	//Отрисовка фигуры
 	Current_Figure->Draw();
 	
-	Check_Field();
 
+
+	bool Time_To_Move_Down = Is_Time_To_Move_Down();
+	if (Time_To_Move_Down) {
+		if (Current_Figure->CanMove()) {
+			Current_Figure->MoveDown();
+		}
+		else {
+			Create_New_Figure();
+		}
+	}
+
+	Check_Field();
 }
 
 
@@ -57,6 +75,59 @@ int Game::Read_Game_Button()
 		return _getch();
 	}
 	return 0;
+}
+
+void Game::Create_New_Figure()
+{
+	//Удаляем старую фигуру если она существует
+	if (Current_Figure != nullptr)
+	{
+		Current_Figure->Stop();
+		delete Current_Figure;
+	}
+	//Создаем новую случайную фигуру
+
+	int r = (rand() % 5);
+	if (r = 0)
+	{
+		Current_Figure = new Squard(field);
+	}
+
+	if (r = 1)
+	{
+		Current_Figure = new Line(field);
+	}
+
+	if (r = 2)
+	{
+		Current_Figure = new Lfigure(field);
+	}
+
+	if (r = 3)
+	{
+		Current_Figure = new Tfigure(field);
+	}
+
+	if (r = 4)
+	{
+		Current_Figure = new Zfigure(field);
+	}
+
+}
+
+
+bool Game::Is_Time_To_Move_Down()
+{
+	struct tm mytm = { 0 };
+	time_t result;
+
+	result = time(0);
+	static time_t lastTimeValue = -1;
+	if (lastTimeValue != result) {
+		lastTimeValue = result;
+		return true;
+	}
+	return false;
 }
 
 bool Game::Check_Line(int row)

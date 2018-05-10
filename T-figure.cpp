@@ -1,11 +1,11 @@
-#include "stdafx.h"
+
 #include <iostream> 
 #include "T-figure.h"
 
 
 
 
-Tfigure::Tfigure(Field *field) : BaseFigure(field)
+Tfigure::Tfigure(Field *field) : Figures(field)
 	{
 		Cell *cell1 = new Cell(_field);
 		cell1->x = field->width / 2 + 1;

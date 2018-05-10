@@ -1,13 +1,13 @@
 #ifndef SQUARD_H   
 #define SQUARD_H  
-#include "BaseFigure.h"
+#include "Figures.h"
 
 
 
 
 
 
-class Squard : public BaseFigure
+class Squard : public Figures
 {
 public:
 	

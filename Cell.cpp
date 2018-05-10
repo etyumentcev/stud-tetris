@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include <iostream>
 #include "Cell.h"
 #include <Windows.h>
@@ -66,3 +65,18 @@ Cell::~Cell()
 {
 }
 
+
+/*void RedCell::Draw()
+{
+	COORD coord;
+	coord.X = x + 1;
+	coord.Y = y + 1;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+	
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	//FlushConsoleInputBuffer(hConsole);
+	SetConsoleTextAttribute(hConsole, 10);
+
+	cout << "#";
+	SetConsoleTextAttribute(hConsole, 20); //set back to black background and white text
+};*/

@@ -1,9 +1,9 @@
 #ifndef LFIGURE_H   
 #define LFIGURE_H
-#include "BaseFigure.h"
+#include "Figures.h"
 
 
-class Lfigure : public BaseFigure
+class Lfigure : public Figures
 {
 public:
 	

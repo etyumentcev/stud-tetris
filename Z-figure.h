@@ -2,10 +2,10 @@
 #define ZFIGURE_H
 
 //#include "stdafx.h"
-#include "BaseFigure.h"
+#include "Figures.h"
 
 
-class Zfigure : public BaseFigure
+class Zfigure : public Figures
 {
 public:
 

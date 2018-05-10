@@ -1,5 +1,5 @@
 #include "Main.h"
-#include "BaseFigure.h"
+#include "Figures.h"
 #include "Game.h"
 
 

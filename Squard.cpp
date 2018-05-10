@@ -1,10 +1,10 @@
-//#include "stdafx.h"
+
 #include <iostream> 
 #include "Squard.h"
 
 
 
-	Squard::Squard(Field *field) : BaseFigure(field)
+	Squard::Squard(Field *field) : Figures(field)
 	{
 		Cell *cell1 = new Cell(_field);
 		cell1->x = field->width / 2;

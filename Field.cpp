@@ -1,8 +1,8 @@
-#include "stdafx.h"
 #include <iostream> 
 #include"Figures.h"
 #include "Cell.h"
 #include "Field.h"
+#include <Windows.h>
 
 using namespace std;
 
