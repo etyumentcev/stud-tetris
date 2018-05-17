@@ -4,9 +4,6 @@
 
 
 
-
-
-
 class Squard : public Figures
 {
 public:

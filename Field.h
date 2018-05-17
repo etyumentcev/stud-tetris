@@ -1,24 +1,30 @@
 #ifndef FIELD_H   
 #define FIELD_H  
-#include "Figures.h"
-#include<vector>
-#include"Cell.h"
 
+#include <vector>
+#include "Cell.h"
 
-class Field : public Figures
+using namespace std;
+
+class Field
 {
 public:
 	Field(int newWidth, int newHeight);
 	int width;
 	int	height;
+	void DrawCells();
 	bool CheckCell(int x, int y);
 	void Draw(int Points);
-	//void Create_Line_Top();
+	//двигаем €чейки вниз, которые наход€тс€ выше указанной строки
 	void MoveCellsDown(int row);
 	void ClearLine(int row);
-	void DrawCells();
-
+	bool IsFull();
+	//ћатрица указателей на €чееки
+	//если €чейка пуста, в ней записан null_ptr
+	//ј если не пуста, то содержит указатель на €чейку
 	vector<vector<Cell*>> cells;
-
+	
 };
+
+
 #endif

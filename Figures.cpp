@@ -9,94 +9,50 @@ using namespace std;
 
 
 
-Figures::Figures(Field *field) : _field(field)
+Figures::Figures(Field *field): _field(field)
 {
-
+	
 }
 
+
+
+
+
+//ќтрисовка всех клеточек фигуры
 void Figures::Draw()
 {
-	for (int i = 0; i < cells.size(); i++)
+	for (size_t i = 0; i < cells.size(); i++)
 	{
 		cells[i]->Draw();
 	}
-	
-};
-//void Figures::Rotate()
-//{
-	
+}
 
-//};
-
-void Figures::MoveLeft()
+bool Figures::CanMoveDown()
 {
-
-
-	// —двигаем все клетки фигуры влево
-	for (int i = 0; i < cells.size(); i++)
-	{
-		cells[i]->x -= 1;
-	}
-
-};
-
-
-void Figures::MoveRight()
-{
-
-	// —двигаем все клетки фигуры вправо
-	for (int i = 0; i < cells.size(); i++)
-	{
-		cells[i]->x += 1;
-	}
-
-};
-
-
-void Figures::MoveDown()
-{
-
-	// —двигаем все клетки фигуры вниз
-	for (int i = 0; i < cells.size(); i++)
-	{
-		cells[i]->y += 1;
-	}
-};
-
-
-void Figures::Stop()
-{
-	//ѕеренос €чеек фигуры в €чейки пол€
-	for (int i = 0; i < cells.size(); i++)
-	{
-		int cellX = cells[i]->x;
-		int cellY = cells[i]->y;
-		_field->cells[cellY][cellX] = cells[i];
-	}
-};
-
-
-
-bool Figures::CanMove()
-{
-	for (int i = 0; i < cells.size(); i++)
+	for (size_t i = 0; i < cells.size(); i++)
 	{
 		bool canMove = false;
 		//—прашиваем у €чейки, может ли она сдвинутьс€
-		if (canMove = cells[i]->CanMoveRight)
-		{
-			return true;
-		};
 
-		if (canMove = cells[i]->CanMoveLeft)
-		{
-			return true;
-		};
+		canMove = cells[i]->CanMoveDown();
 
-		if (canMove = cells[i]->CanMoveDown)
-		{
-			return true;
-		};
+		//≈сли не может, то выходим из процедуры и говорим, что не можем сдвинутьс€
+		if (!canMove) {
+			return false;
+		}
+	}
+
+	//¬се €чейки могут сдвинутьс€ вниз
+	return true;
+}
+
+bool Figures::CanMoveRigt()
+{
+	for (size_t i = 0; i < cells.size(); i++)
+	{
+		bool canMove = false;
+
+		canMove = cells[i]->CanMoveRight();
 
 
 		//≈сли не может, то выходим из процедуры и говорим, что не можем сдвинутьс€
@@ -107,4 +63,71 @@ bool Figures::CanMove()
 
 	//¬се €чейки могут сдвинутьс€ вправо
 	return true;
+}
+
+bool Figures::CanMoveLeft()
+{
+	for (size_t i = 0; i < cells.size(); i++)
+	{
+		bool canMove = false;
+		//—прашиваем у €чейки, может ли она сдвинутьс€
+
+		canMove = cells[i]->CanMoveLeft();
+
+		//≈сли не может, то выходим из процедуры и говорим, что не можем сдвинутьс€
+		if (!canMove) {
+			return false;
+		}
+	}
+
+	//¬се €чейки могут сдвинутьс€ влево
+	return true;
+}
+
+
+void Figures::MoveDown()
+{
+	if (CanMoveDown())
+	{
+		// —двигаем все клетки фигуры вниз
+		for (size_t i = 0; i < cells.size(); i++)
+		{
+			cells[i]->y += 1;
+		}
+	}
+}
+
+void Figures::MoveRight()
+{
+	if (CanMoveRigt())
+	{
+		// —двигаем все клетки фигуры вправо
+		for (size_t i = 0; i < cells.size(); i++)
+		{
+			cells[i]->x += 1;
+		}
+	}
+}
+
+void Figures::MoveLeft()
+{
+	if (CanMoveLeft())
+	{
+		// —двигаем все клетки фигуры влево
+		for (size_t i = 0; i < cells.size(); i++)
+		{
+			cells[i]->x -= 1;
+		}
+	}
+}
+
+void Figures::Stop()
+{
+	//ѕеренос €чеек фигуры в €чейки пол€
+	for (size_t i = 0; i < cells.size(); i++)
+	{
+		int cellX = cells[i]->x;
+		int cellY = cells[i]->y;
+		_field->cells[cellY][cellX] = cells[i];
+	}
 }

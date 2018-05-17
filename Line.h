@@ -3,18 +3,16 @@
 #include "Figures.h"
 
 
-//using namespace std;
+
 
 
 
 class Line : public Figures
 {
 public:
-	
-
+		
 	Line(Field *field);
-	
-	
+			
 };
 
 #endif
