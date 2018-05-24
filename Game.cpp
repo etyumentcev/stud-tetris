@@ -10,6 +10,7 @@
 #include "Line.h"
 #include "Squard.h"
 
+
 using namespace std;
 using namespace std::chrono;
 
@@ -42,12 +43,12 @@ void Game::Tick()
 		{
 			Current_Figure->MoveRight();
 		}
-		/*else {
-		if (Button == )
+		else {
+		if (Button == 101)
 		{
-			Game_Over();
+			Escape();
 		}
-		}*/
+		}
 	}
 
 	//Отрисовка поля
@@ -83,42 +84,52 @@ void Game::Create_New_Figure()
 	}
 	//Создаем новую случайную фигуру
 
-	Random();
+	
 
 }
 
-
-void Game::Random()
+void Game::CreateRandomFig()
 {
-
-	int random = rand() % 5;
-
-	if (random == 0)
-	{
-		Current_Figure = new Squard(field);
-	}
-
-
-	if (random == 1)
-	{
-		Current_Figure = new Line(field);
-	}
-
-	if (random == 2)
-	{
-		Current_Figure = new Lfigure(field);
-	}
-
-	if (random == 3)
-	{
-		Current_Figure = new Tfigure(field);
-	}
-
-	if (random == 4)
-	{
-		Current_Figure = new Zfigure(field);
-	}
+	int a;
+	a = rand() % 5;
+	Current_Figure= creator[a]->CreateFactFig(field);
 }
+
+
+//void Game::Random()
+//{
+//
+//	int random = rand() % 5;
+//
+//	
+//	if (random == 0)
+//	{
+//		Current_Figure = new Squard(field);
+//	}
+//
+//
+//	if (random == 1)
+//	{
+//		Current_Figure = new Line(field);
+//	}
+//
+//	if (random == 2)
+//	{
+//		Current_Figure = new Lfigure(field);
+//	}
+//
+//	if (random == 3)
+//	{
+//		Current_Figure = new Tfigure(field);
+//	}
+//
+//	if (random == 4)
+//	{
+//		Current_Figure = new Zfigure(field);
+//	}
+//}
+
+
 
 bool Game::Is_Time_To_Move_Down()
 {

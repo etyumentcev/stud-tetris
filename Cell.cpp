@@ -13,11 +13,12 @@ Cell::Cell(Field *field):_field(field)
 void Cell::Draw()
 {
 	COORD coord;
-	coord.X = x+1;
-	coord.Y = y+1;
+	coord.X = x + 1;
+	coord.Y = y + 1;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 	cout << "#";
 }
+	
 
 bool Cell::CanMoveRight()
 {

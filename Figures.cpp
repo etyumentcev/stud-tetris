@@ -14,7 +14,39 @@ Figures::Figures(Field *field): _field(field)
 	
 }
 
+//void Figures::Random(int r)
+//{
+//	return *RCurrent_Figure;
+//}
 
+//void Figures::Rotate(int direction)
+//{
+//if (direction==1)
+//{
+//RotateRight();
+//}
+//else 
+//{
+//if (direction==2)
+//{
+//RotateDown();
+//}
+//
+//else
+//{
+//if (direction==3)
+//{
+//RotateLeft();
+//}
+//else
+//{
+//if (direction==4)
+//{
+//RotateUp();
+//}
+//}
+//}
+//};
 
 
 
