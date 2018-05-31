@@ -63,6 +63,85 @@ bool Cell::CanMoveDown()
 	return true;
 }
 
+bool Cell::CanRotateRight(int baseX, int baseY)
+{
+	int dx = baseX - x;
+	int dy = baseY - y;
+	int newX = x + dy;
+	int newY = y - dx;
+
+	if (newX < 0 || newY < 0)
+	{
+		return false;
+	}
+
+	if (newX >_field->width || newY >_field->height)
+	{
+		return false;
+	}
+
+	return true;
+
+}
+
+bool Cell::CanRotateDown(int baseX, int baseY)
+{
+	int dx = baseX - x;
+	int dy = baseY - y;
+	int newX = x + dy;
+	int newY = y + dx;
+	if (newX < 0 || newY < 0)
+	{
+		return false;
+	}
+
+	if (newX >_field->width || newY >_field->height)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+bool Cell::CanRotateLeft(int baseX, int baseY)
+{
+	int dx = baseX - x;
+	int dy = baseY - y;
+	int newX = x - dy;
+	int newY = y + dx;
+	if (newX < 0 || newY < 0)
+	{
+		return false;
+	}
+
+	if (newX >_field->width || newY >_field->height)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+bool Cell::CanRotateUp(int baseX, int baseY)
+{
+	int dx = baseX - x;
+	int dy = baseY - y;
+
+	int newX = x - dy;
+	int newY = y - dx;
+
+
+	if (newX < 0 || newY < 0)
+	{
+		return false;
+	}
+
+	if (newX >_field->width || newY >_field->height)
+	{
+		return false;
+	}
+	return true;
+}
 
 Cell::~Cell()
 {

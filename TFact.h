@@ -5,7 +5,7 @@
 #include "Factory.h"
 #include "T-figure.h"
 
-class TFact
+class TFact : public Factory
 {
 public:
 	TFact();

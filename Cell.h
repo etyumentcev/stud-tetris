@@ -17,6 +17,11 @@ public:
 	bool CanMoveLeft();
 	bool CanMoveDown();
 	bool filled = false;
+
+	virtual bool CanRotateRight(int baseX, int baseY);
+	virtual bool CanRotateDown(int baseX, int baseY);
+	virtual bool CanRotateLeft(int baseX, int baseY);
+	virtual bool CanRotateUp(int baseX, int baseY);
 	
 protected:
 	Field *_field;

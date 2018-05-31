@@ -4,15 +4,13 @@
 #include "Field.h"
 #include "Figures.h"
 #include "Factory.h"
-#include<map>
-#include"LFact.h"
-#include"LineFact.h"
-#include"SquardFact.h"
-#include"TFact.h"
-#include"ZFact.h"
+#include "FactMap.h"
+#include "RotateFabric.h"
+#include"RotateMap.h"
 
 
- //BUTTON_SPACE=	32
+
+
 
 
 class Game
@@ -24,7 +22,6 @@ public:
 	int Read_Game_Button();
 	void New_Game();
 	int Counter = 0;
-	/*void Random();*/
 	//Процедура убирает заполненные строки
 	void Check_Field();
 	bool Check_Line(int row);
@@ -32,15 +29,14 @@ public:
 	Figures *Current_Figure;
 	void CreateRandomFig();
 	bool Is_Time_To_Move_Down();
+	void Game_Change_Figure_Direction();
+	//void Game_Can_Change_Direction();
 	void Game_Over();
 	void Escape();
-	std::map <int, Factory*>creator = {
-		{0,LFact()},
-		{1,LineFact()},
-		{2,SquardFact()},
-		{3,TFact()},
-		{4,ZFact()}
-	};
+	RotateMap rt;
+	FactMap pt;
+	int a = rand() % 5;
+
 	~Game();
 };
 

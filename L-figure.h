@@ -9,4 +9,31 @@ public:
 	
 	Lfigure(Field *field);
 };
+
+
+
+class LfigureR : public Figures
+{
+public:
+
+	LfigureR(Field *field);
+
+};
+
+
+class LfigureD : public Figures
+{
+public:
+
+	LfigureD(Field *field);
+};
+
+
+
+class LfigureL : public Figures
+{
+public:
+
+	LfigureL(Field *field);
+};
 #endif

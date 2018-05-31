@@ -18,16 +18,16 @@ public:
 	virtual bool CanMoveDown();
 	virtual bool CanMoveRigt();
 	virtual bool CanMoveLeft();
-	virtual void Random(int r);
 	virtual void MoveRight();
 	virtual void MoveLeft();
-	Figures*RCurrent_Figure;
-	/*virtual void Rotate(int direction);*/
-	/*virtual void RotateRight()=0;
-	virtual void RotateLeft()=0;
-	virtual void RotateDown()=0;
-	virtual void RotateUp()=0;
-	*/
+	int directoin;
+	virtual bool CanRotateRight();
+	virtual bool CanRotateDown();
+	virtual bool CanRotateLeft();
+	virtual bool CanRotateUp();
+	virtual void TakeCoord();
+	int CoordX;
+	int CoordY;
 	
 	void Stop();//ƒействие, которое выполн€етс€ при остановке фигуры
 	int x;

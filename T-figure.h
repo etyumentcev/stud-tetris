@@ -13,6 +13,41 @@ public:
 
 	
 };
+class TfigureR : public Figures
+{
+public:
+
+
+
+	TfigureR(Field *field);
+
+
+};
+
+
+class TfigureD : public Figures
+{
+public:
+
+
+
+	TfigureD(Field *field);
+
+
+};
+
+
+class TfigureL : public Figures
+{
+public:
+
+
+
+	TfigureL(Field *field);
+
+
+};
+
 #endif
 
 

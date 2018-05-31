@@ -13,5 +13,38 @@ public:
 
 	
 };
+
+
+class ZfigureR : public Figures
+{
+public:
+
+	ZfigureR(Field *field);
+
+
+};
+
+
+
+
+class ZfigureD : public Figures
+{
+public:
+
+	ZfigureD(Field *field);
+
+
+};
+
+
+
+class ZfigureL : public Figures
+{
+public:
+
+	ZfigureL(Field *field);
+
+
+};
 #endif
 

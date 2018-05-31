@@ -44,12 +44,20 @@ void Game::Tick()
 			Current_Figure->MoveRight();
 		}
 		else {
-		if (Button == 101)
-		{
-			Escape();
-		}
+			if (Button == 101)
+			{
+				Escape();
+			}
+
+			else {
+				if (Button == 32)
+				{
+					Game_Change_Figure_Direction();
+				}
+			}
 		}
 	}
+	
 
 	//Отрисовка поля
 	field->Draw(Counter);
@@ -84,51 +92,23 @@ void Game::Create_New_Figure()
 	}
 	//Создаем новую случайную фигуру
 
-	
+	CreateRandomFig();
 
 }
 
 void Game::CreateRandomFig()
 {
-	int a;
-	a = rand() % 5;
-	Current_Figure= creator[a]->CreateFactFig(field);
+	delete Current_Figure;
+	Current_Figure= pt.creator[a]->CreateFactFig(field);
 }
 
-
-//void Game::Random()
-//{
-//
-//	int random = rand() % 5;
-//
-//	
-//	if (random == 0)
-//	{
-//		Current_Figure = new Squard(field);
-//	}
-//
-//
-//	if (random == 1)
-//	{
-//		Current_Figure = new Line(field);
-//	}
-//
-//	if (random == 2)
-//	{
-//		Current_Figure = new Lfigure(field);
-//	}
-//
-//	if (random == 3)
-//	{
-//		Current_Figure = new Tfigure(field);
-//	}
-//
-//	if (random == 4)
-//	{
-//		Current_Figure = new Zfigure(field);
-//	}
-//}
-
+void Game::Game_Change_Figure_Direction()
+{
+	Current_Figure->TakeCoord();
+	if (Current_Figure->CanRotateRight()|| Current_Figure->CanRotateLeft()|| Current_Figure->CanRotateDown()|| Current_Figure->CanRotateUp()) {
+		Current_Figure = rt.rotation[a]->Rotate();
+	}
+}
 
 
 bool Game::Is_Time_To_Move_Down()
